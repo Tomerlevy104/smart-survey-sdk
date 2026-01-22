@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- SmartSurvey SDK palette (neutral, modern, host-independent) -->
+    <color name="ss_surface">#FFFFFFFF</color>
+
+    <color name="ss_card_bg">#FFFFFFFF</color>
+    <color name="ss_card_alt_bg">#FFF6F6F6</color>
+
+    <!-- Subtle outline (12% black) -->
+    <color name="ss_outline_variant">#1F000000</color>
+
+    <color name="ss_text_primary">#FF1A1A1A</color>
+    <color name="ss_text_secondary">#FF6B6B6B</color>
+
+    <!-- Button -->
+    <color name="ss_button_bg">#FFFFFFFF</color>
+    <color name="ss_ripple">#33000000</color>
+
+    <!-- Loading -->
+    <color name="ss_loading_overlay">#99000000</color>
+
+    <!-- Indicator -->
+    <color name="ss_indicator">#FF3F51B5</color>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading_survey">Loading survey...</string>
+    <string name="smart_survey">Smart Survey</string>
+    <string name="error">Error: %1$s</string>
+    <string name="additional_error">Error: %1$s</string>
+    <string name="please_answer_all_questions">Please answer all questions.</string>
+    <string name="submitting">Submitting...</string>
+    <string name="survey_submitted">Survey submitted!</string>
+    <string name="survey_title">Survey Title</string>
+    <string name="submit">Submit</string>
+    <string name="prompt">Prompt</string>
+    <string name="your_answer">Your answer</string>
+    <string name="ss_survey_subtitle">Please answer the following questions</string>
+
+</resources>
