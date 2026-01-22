@@ -6,6 +6,7 @@ import retrofit2.http.POST
 
 internal interface SurveyResponseApi {
 
-    @POST("api/v1/survey-responses")
+    // POST survey response -  api/sdk/survey-responses
+    @POST("/api/sdk/survey-responses")
     suspend fun submitSurveyResponse(@Body body: SurveyResponseDto): SurveyResponseDto
 }

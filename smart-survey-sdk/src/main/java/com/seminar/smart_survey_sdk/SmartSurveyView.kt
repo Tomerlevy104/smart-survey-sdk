@@ -39,8 +39,10 @@ class SmartSurveyView : FrameLayout {
     private val answers: MutableMap<String, String> = mutableMapOf()
     private var currentSurvey: SurveyDto? = null
 
-    private val viewJob = SupervisorJob()
-    private val viewScope = CoroutineScope(Dispatchers.Main + viewJob)
+    private val viewJob =
+        SupervisorJob() // SupervisorJob is a Job that allows you to run several coroutines together, so that if one fails, the others are not canceled.
+    private val viewScope =
+        CoroutineScope(Dispatchers.Main + viewJob) // viewScope is a CoroutineScope that runs coroutines on the Main thread, and is managed by viewJob.
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
@@ -81,8 +83,8 @@ class SmartSurveyView : FrameLayout {
 
         findViews(view)
         setupListeners()
-        // Placeholder text for now
-        tvSurveyTitle.text = "Smart Survey (SDK UI Loaded)"
+        // Placeholder text
+        tvSurveyTitle.text = context.getString(R.string.smart_survey)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,7 +115,7 @@ class SmartSurveyView : FrameLayout {
         currentSurveyId = surveyId
 
         showLoading()
-        tvSurveyTitle.text = "Loading survey..."
+        tvSurveyTitle.text = context.getString(R.string.loading_survey)
         viewScope.launch {
             try {
                 val survey = withContext(Dispatchers.IO) {
@@ -124,22 +126,23 @@ class SmartSurveyView : FrameLayout {
                 listener?.onSurveyLoaded(surveyId)
             } catch (t: Throwable) {
                 hideLoading()
-                tvSurveyTitle.text = "Error: ${t.message}"
+                tvSurveyTitle.text = context.getString(R.string.error, t.message)
                 listener?.onError(t)
             }
         }
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Load survey by id function
     fun loadRandomSurvey() {
         SmartSurvey.requireConfig()
 
         showLoading()
-        tvSurveyTitle.text = "Loading survey..."
+        tvSurveyTitle.text = context.getString(R.string.loading_survey)
         viewScope.launch {
             try {
                 val survey = withContext(Dispatchers.IO) {
-                    ApiClient.surveyApi().getRandomSurvey() // // Sending the request to Server
+                    ApiClient.surveyApi().getRandomSurvey() // Sending the request to Server
                 }
                 currentSurveyId = survey.id
                 renderSurvey(survey)
@@ -147,7 +150,7 @@ class SmartSurveyView : FrameLayout {
                 listener?.onSurveyLoaded(survey.id)
             } catch (t: Throwable) {
                 hideLoading()
-                tvSurveyTitle.text = "Error: ${t.message}"
+                tvSurveyTitle.text = context.getString(R.string.error, t.message)
                 listener?.onError(t)
             }
         }
@@ -155,26 +158,26 @@ class SmartSurveyView : FrameLayout {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Submit function
-    fun submit() {
+    internal fun submit() {
         val survey = currentSurvey
         val surveyId = currentSurveyId
 
         if (survey == null || surveyId.isNullOrBlank()) {
-            val err = IllegalStateException("No survey loaded. Call loadSurveyById() / loadRandomSurvey() first.")
-            tvSurveyTitle.text = "Error: ${err.message}"
+            val err =
+                IllegalStateException("No survey loaded. Call loadSurveyById() / loadRandomSurvey() first.")
+            tvSurveyTitle.text = context.getString(R.string.additional_error, err.message)
             listener?.onError(err)
             return
         }
 
-        // Client-side validation: all questions must be answered
+        // Client-side validation - all questions must be answered
         val missing = survey.questions
             .map { it.id }
-            .filter { it.isNullOrBlank().not() }
-            .filter { qId -> answers[qId].isNullOrBlank() }
+            .filter { id -> answers[id].orEmpty().trim().isBlank() }
 
         if (missing.isNotEmpty()) {
-            val err = IllegalStateException("Please answer all questions before submitting.")
-            tvSurveyTitle.text = "Please answer all questions."
+            val err = IllegalStateException("Please answer all questions before submitting")
+            tvSurveyTitle.text = context.getString(R.string.please_answer_all_questions)
             listener?.onError(err)
             return
         }
@@ -188,23 +191,24 @@ class SmartSurveyView : FrameLayout {
         )
 
         showLoading()
-        tvSurveyTitle.text = "Submitting..."
+        tvSurveyTitle.text = context.getString(R.string.submitting)
 
         viewScope.launch {
             try {
                 SmartSurvey.requireConfig()
 
-                val responseId = withContext(Dispatchers.IO) {
-                    ApiClient.surveyResponseApi().submitSurveyResponse(payload) // Sending the request to Server
+                val response = withContext(Dispatchers.IO) {
+                    ApiClient.surveyResponseApi()
+                        .submitSurveyResponse(payload) // Sending the request to Server
                 }
 
                 hideLoading()
-                tvSurveyTitle.text = "Survey submitted!"
+                tvSurveyTitle.text = context.getString(R.string.survey_submitted)
                 listener?.onSurveySubmitted(surveyId) // Successful response
 
             } catch (t: Throwable) { // Failed response
                 hideLoading()
-                tvSurveyTitle.text = "Error: ${t.message}"
+                tvSurveyTitle.text = context.getString(R.string.error, t.message)
                 listener?.onError(t)
             }
         }
@@ -249,7 +253,6 @@ class SmartSurveyView : FrameLayout {
 
         questionsContainer.addView(itemView)
     }
-
 
     //////////////////////////////////////////////////////////////////////////////////
     // Render SINGLE CHOICE question

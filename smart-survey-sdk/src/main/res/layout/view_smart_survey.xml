@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootFrame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/ss_surface">
 
     <!-- The scrollable content -->
     <ScrollView
         android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/surveyRoot"
@@ -17,47 +20,116 @@
             android:layout_height="wrap_content"
             android:layoutDirection="ltr"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingStart="16dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="20dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvSurveyTitle"
+            <!-- Header / Title card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="12dp"
-                android:text="Survey Title"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/ss_card_bg"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:strokeColor="@color/ss_outline_variant"
+                app:strokeWidth="1dp">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/questionsContainer"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvSurveyTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/survey_title"
+                        android:textColor="@color/ss_text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvSurveySubtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/ss_survey_subtitle"
+                        android:textColor="@color/ss_text_secondary"
+                        android:textSize="14sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Questions container -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/ss_card_alt_bg"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:strokeColor="@color/ss_outline_variant"
+                app:strokeWidth="1dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/questionsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Submit" />
+                android:layout_marginTop="2dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="56dp"
+                android:text="@string/submit"
+                android:textColor="@color/ss_text_primary"
+                app:backgroundTint="@color/ss_button_bg"
+                app:cornerRadius="18dp"
+                app:rippleColor="@color/ss_ripple"
+                app:strokeColor="@color/ss_outline_variant"
+                app:strokeWidth="1dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
-    <!-- The loading overlay -->
+
+    <!-- Loading overlay -->
     <View
         android:id="@+id/loadingOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66000000"
+        android:background="@color/ss_loading_overlay"
         android:visibility="gone" />
 
     <!-- Center loading spinner overlay -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressLoading"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:indicatorColor="@color/ss_indicator"
+        app:indicatorSize="56dp"
+        app:trackThickness="5dp" />
 
 </FrameLayout>
