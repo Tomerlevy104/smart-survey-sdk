@@ -9,12 +9,11 @@ import java.util.concurrent.TimeUnit
  * Usage (in the host app):
  * SmartSurvey.init(
  *   context = applicationContext,
- *   baseUrl = "https://your-api.com/",
+ *   baseUrl = "https://survey-sdk-server.onrender.com/",
  *   apiKey = "YOUR_API_KEY"
  * )
  */
 object SmartSurvey {
-
 
     // Immutable configuration used by the SDK.
     data class Config(
@@ -33,7 +32,6 @@ object SmartSurvey {
 
     /**
      * Initialize the SDK once (typically from Application.onCreate()).
-     *
      * @param context Use applicationContext
      * @param baseUrl Base URL of your Smart Survey API server
      * @param apiKey  API key
@@ -44,7 +42,7 @@ object SmartSurvey {
         baseUrl: String,
         apiKey: String,
         connectTimeoutMs: Long = TimeUnit.SECONDS.toMillis(10),
-        readTimeoutMs: Long = TimeUnit.SECONDS.toMillis(20),
+        readTimeoutMs: Long = TimeUnit.SECONDS.toMillis(8),
         writeTimeoutMs: Long = TimeUnit.SECONDS.toMillis(20)
     ) {
         val normalizedBaseUrl = normalizeBaseUrl(baseUrl)
@@ -59,13 +57,14 @@ object SmartSurvey {
         )
     }
 
-    // Internal: returns the current SDK config, or throws if init() wasn't called.
+    // Internal - returns the current SDK config, or throws if init() wasn't called.
     internal fun requireConfig(): Config {
         return config ?: throw IllegalStateException(
             "SmartSurvey SDK is not initialized. Call SmartSurvey.init(...) first."
         )
     }
 
+    // Normalize the BaseUrl
     private fun normalizeBaseUrl(baseUrl: String): String {
         val trimmed = baseUrl.trim()
         require(trimmed.isNotEmpty()) { "baseUrl must not be empty" }

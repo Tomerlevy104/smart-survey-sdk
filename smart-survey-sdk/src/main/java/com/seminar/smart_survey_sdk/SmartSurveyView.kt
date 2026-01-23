@@ -133,7 +133,7 @@ class SmartSurveyView : FrameLayout {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    // Load survey by id function
+    // Load random survey function
     fun loadRandomSurvey() {
         SmartSurvey.requireConfig()
 
@@ -222,33 +222,33 @@ class SmartSurveyView : FrameLayout {
         questionsContainer.removeAllViews()
         answers.clear()
 
-        survey.questions.forEach { q ->
-            renderQuestion(q)
+        survey.questions.forEach { que ->
+            renderQuestion(que)
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     // Routes for questions options
-    private fun renderQuestion(q: QuestionDto) {
-        when (q.type) {
-            QuestionType.TEXT -> renderTextQuestion(q)
-            QuestionType.SINGLE_CHOICE -> renderSingleChoiceQuestion(q)
+    private fun renderQuestion(que: QuestionDto) {
+        when (que.type) {
+            QuestionType.TEXT -> renderTextQuestion(que)
+            QuestionType.SINGLE_CHOICE -> renderSingleChoiceQuestion(que)
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     // Render TEXT question
-    private fun renderTextQuestion(q: QuestionDto) {
+    private fun renderTextQuestion(que: QuestionDto) {
         val itemView = LayoutInflater.from(context)
             .inflate(R.layout.item_question_text, questionsContainer, false)
 
         val tvPrompt = itemView.findViewById<MaterialTextView>(R.id.tvPrompt)
         val etAnswer = itemView.findViewById<TextInputEditText>(R.id.etAnswer)
 
-        tvPrompt.text = q.prompt
+        tvPrompt.text = que.prompt
 
         etAnswer.addTextChangedListener {
-            answers[q.id] = it?.toString().orEmpty()
+            answers[que.id] = it?.toString().orEmpty()
         }
 
         questionsContainer.addView(itemView)
@@ -256,17 +256,17 @@ class SmartSurveyView : FrameLayout {
 
     //////////////////////////////////////////////////////////////////////////////////
     // Render SINGLE CHOICE question
-    private fun renderSingleChoiceQuestion(q: QuestionDto) {
+    private fun renderSingleChoiceQuestion(que: QuestionDto) {
         val itemView = LayoutInflater.from(context)
             .inflate(R.layout.item_question_single_choice, questionsContainer, false)
 
         val tvPrompt = itemView.findViewById<MaterialTextView>(R.id.tvPrompt)
         val rgOptions = itemView.findViewById<RadioGroup>(R.id.rgOptions)
 
-        tvPrompt.text = q.prompt
+        tvPrompt.text = que.prompt
         rgOptions.removeAllViews()
 
-        val opts = q.options.orEmpty()
+        val opts = que.options.orEmpty()
 
         opts.forEachIndexed { index, option ->
             val rb = RadioButton(context).apply {
@@ -285,9 +285,9 @@ class SmartSurveyView : FrameLayout {
         rgOptions.setOnCheckedChangeListener { group, checkedId ->
             val selected = group.findViewById<RadioButton>(checkedId)?.text?.toString()
             if (!selected.isNullOrBlank()) {
-                answers[q.id] = selected
+                answers[que.id] = selected
             } else {
-                answers.remove(q.id)
+                answers.remove(que.id)
             }
         }
 

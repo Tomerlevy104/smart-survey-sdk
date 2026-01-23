@@ -1,8 +1,7 @@
 package com.seminar.smart_survey_sdk
 
 /**
- * Callbacks exposed by the Smart Survey SDK.
- * The host app implements this interface to receive survey events.
+ * SmartSurveyListener - Interface for receiving survey events.
  */
 interface SmartSurveyListener {
 

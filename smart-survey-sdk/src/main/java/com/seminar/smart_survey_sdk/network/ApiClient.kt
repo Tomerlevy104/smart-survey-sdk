@@ -67,6 +67,7 @@ internal object ApiClient {
         val existing = surveyApi
         if (existing != null) return existing
 
+        // synchronized - only one thread can enter this block at a time
         synchronized(this) {
             val again = surveyApi
             if (again != null) return again
@@ -81,6 +82,7 @@ internal object ApiClient {
         val existing = surveyResponseApi
         if (existing != null) return existing
 
+        // synchronized - only one thread can enter this block at a time
         synchronized(this) {
             val again = surveyResponseApi
             if (again != null) return again
