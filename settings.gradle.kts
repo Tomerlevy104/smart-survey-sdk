@@ -11,11 +11,13 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+// Added For using jitpack
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
 }
 

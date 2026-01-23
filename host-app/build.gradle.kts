@@ -61,5 +61,7 @@ dependencies {
     implementation(libs.material.v1120)
     implementation(libs.androidx.appcompat.v170)
 
-    implementation(project(":smart-survey-sdk"))
+//    implementation(project(":smart-survey-sdk"))
+    implementation("com.github.Tomerlevy104:smart-survey-sdk:v1.0.1")
+
 }
