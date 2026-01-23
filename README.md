@@ -201,7 +201,7 @@ class MainActivity : AppCompatActivity() {
 
 ---
 
-## 🖼️ 5. Screenshots
+## 🖼️ Screenshots
 
 ### Open Survey Button (Host App UI)
 <img src="screenshots/button_open_survey.jpg" width="300" />
@@ -214,7 +214,7 @@ class MainActivity : AppCompatActivity() {
 
 
 ---
-## 🛠️ 6. Technology
+## 🛠️ Technology
 
 This SDK was built using:
 
