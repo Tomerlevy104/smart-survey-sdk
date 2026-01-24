@@ -23,4 +23,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "smart-survey-sdk"
 include(":smart-survey-sdk")
-include(":host-app")
+//include(":host-app")
