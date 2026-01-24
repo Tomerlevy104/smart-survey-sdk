@@ -1,0 +1,44 @@
+site_name: Smart Survey Documentation
+site_url: https://Tomerlevy104.github.io/smart-survey-sdk/
+site_author: Tomer Levy
+repo_url: https://github.com/Tomerlevy104/smart-survey-sdk
+repo_name: Smart Survey SDK
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - navigation.top
+    - toc.follow
+
+nav:
+  - Home: index.md
+  - SDK:
+      - Overview: sdk/index.md
+  - Admin Panel:
+      - Overview: admin-panel/index.md
+  - Server:
+      - Overview: server/index.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true

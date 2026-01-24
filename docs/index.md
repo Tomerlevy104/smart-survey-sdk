@@ -1,0 +1,21 @@
+# Smart Survey Documentation
+
+Welcome! This documentation contains everything you need to use the Smart Survey SDK.
+
+## 🏗️ Architecture
+
+<img src="assets/sdk_arch.png" width="900" />
+
+> The diagram above shows the complete flow between the Admin Panel, Android SDK, Backend Server, and MongoDB Atlas.
+
+## 📦 Components
+
+- **Library (Android SDK)**: Display surveys inside Android apps, fetch surveys, and submit responses.  
+  Repo: https://github.com/Tomerlevy104/smart-survey-sdk
+  Repo: [smart-survey-sdk](https://github.com/Tomerlevy104/smart-survey-sdk)
+
+- **Admin Panel (Web)**: Create/manage surveys, view responses, and get your API key after signup.  
+  Repo: https://github.com/Tomerlevy104/survey-admin-panel
+
+- **Server (Backend)**: Spring Boot API with JWT (Admin) + API Key auth (SDK), MongoDB Atlas storage.  
+  Repo: https://github.com/Tomerlevy104/survey-sdk-server
