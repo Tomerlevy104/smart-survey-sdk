@@ -20,7 +20,7 @@ High-level flow:
 - **Android SDK** → calls **SDK API** using **API Key** header: `X-API-Key`
 - **Server** → stores data in **MongoDB Atlas (cloud)**
 
-<img src="docs/assets/arch_server.png" width="700" />
+<img src="../assets/arch_server.png" width="700" />
 
 Project layers (typical request path):
 
