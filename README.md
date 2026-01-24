@@ -240,6 +240,7 @@ The main public API for SDK users:
 Full documentation is available here:  
 👉 https://tomerlevy104.github.io/smart-survey-sdk/
 
+---
 ## 👨‍💻 Author
 
 Developed by **Tomer Levy**
