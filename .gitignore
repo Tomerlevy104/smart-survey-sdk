@@ -16,3 +16,4 @@ local.properties
 # Kotlin / Android Studio logs
 .kotlin/
 *.log
+site/
