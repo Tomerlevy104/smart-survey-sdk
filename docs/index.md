@@ -18,3 +18,10 @@ Welcome! This documentation contains everything you need to use the Smart Survey
 
 - **Server (Backend)**: Spring Boot API with JWT (Admin) + API Key auth (SDK), MongoDB Atlas storage.  
   Repo: [survey-sdk-server](https://github.com/Tomerlevy104/survey-sdk-server)
+
+## 🎥 Video Tutorial
+
+<video controls width="900">
+  <source src="assets/smart_survey_sdk_video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
