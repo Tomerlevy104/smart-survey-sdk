@@ -235,6 +235,10 @@ The main public API for SDK users:
 - `SmartSurveyView.loadRandomSurvey()`
 
 ---
+## 📚 Documentation
+
+Full documentation is available here:  
+👉 https://tomerlevy104.github.io/smart-survey-sdk/
 
 ## 👨‍💻 Author
 
