@@ -4,7 +4,7 @@ Welcome! This documentation contains everything you need to use the Smart Survey
 
 ## 🏗️ Architecture
 
-<img src="assets/sdk_arch.png" width="1200" />
+<img src="../assets/sdk_arch.png" width="1200" />
 
 > The diagram above shows the complete flow between the Admin Panel, Android SDK, Backend Server, and MongoDB Atlas.
 
