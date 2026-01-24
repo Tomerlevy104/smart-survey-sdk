@@ -1,7 +1,7 @@
-# 📋 Smart Survey SDK
+# 📋 Smart Survey Library
 
 ---
-Smart Survey SDK is an Android library that allows developers to display surveys inside their apps.
+Smart Survey is an Android library that allows developers to display surveys inside their apps.
 The SDK can load a survey from a server (by ID or randomly), render it as a UI component, and submit the user's answers back to the server.
 
 This library is designed to be simple to integrate and easy to use inside any Android project.

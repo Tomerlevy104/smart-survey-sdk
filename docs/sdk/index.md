@@ -204,13 +204,13 @@ class MainActivity : AppCompatActivity() {
 ## 🖼️ Screenshots
 
 ### Open Survey Button (Host App UI)
-<img src="assets/button_open_survey.jpg" width="300" />
+<img src="docs/assets/button_open_survey.jpg" width="300" />
 
 ### Survey Loading State (Overlay + Spinner)
-<img src="assets/loading_survey.jpg" width="300" />
+<img src="docs/assets/loading_survey.jpg" width="300" />
 
 ### Survey Screen (Questions & Answers UI)
-<img src="assets/survey_view.jpg" width="300" />
+<img src="docs/assets/survey_view.jpg" width="300" />
 
 
 ---
