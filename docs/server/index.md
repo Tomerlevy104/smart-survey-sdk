@@ -5,7 +5,7 @@ A Spring Boot backend for the **Smart Survey SDK** and the **Survey Admin Panel*
 This server is responsible for:
 - Developer authentication (JWT) for the Admin Panel
 - API Key authentication for the Android SDK
-- Survey CRUD operations (create / update / delete / list)
+- Survey CRUD operations (create / read / update / delete)
 - Collecting and storing survey responses from end-users
 
 🌐 Live Server (Render): **https://survey-sdk-server.onrender.com**
