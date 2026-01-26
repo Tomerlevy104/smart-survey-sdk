@@ -28,8 +28,9 @@ theme:
     - toc.follow
 
 nav:
-  - Home: index.md
-  - SDK:
+  - Home:
+      - Overview: index.md
+  - Library:
       - Overview: sdk/index.md
   - Admin Panel:
       - Overview: admin-panel/index.md

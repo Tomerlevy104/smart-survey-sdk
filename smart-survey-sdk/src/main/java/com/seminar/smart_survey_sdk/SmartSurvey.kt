@@ -36,6 +36,7 @@ object SmartSurvey {
      * @param baseUrl Base URL of your Smart Survey API server
      * @param apiKey  API key
      */
+    // synchronized means that only one thread can execute this method at a time.
     @Synchronized
     fun init(
         context: Context,
